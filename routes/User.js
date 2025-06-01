@@ -16,7 +16,8 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Email already in use' });
     }
 
-    const user = new User({ name, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10); // hash password
+    const user = new User({ name, email, password: hashedPassword });
     await user.save();
 
     res.status(201).json({ message: 'User created successfully' });
