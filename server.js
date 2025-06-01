@@ -7,7 +7,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "https://stackzstore.netlify.app/"
+  origin: ['http://localhost:3000', 'https://stackzstore.netlify.app']
 }));
 app.use(express.json());
 const path = require('path');
